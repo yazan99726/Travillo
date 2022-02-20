@@ -1,0 +1,67 @@
+﻿@model WebApplication4.Models.Trip
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1 class=" text-danger ">Create Trip</h1>
+
+<hr />
+<div class="row  ">
+    <div class="col-md-4">
+        <form asp-action="Create" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group ">
+                <label asp-for="Tripname" class="control-label text-info"></label>
+                <input asp-for="Tripname" class="form-control" style="border: 3px solid #ccc;"/>
+                <span asp-validation-for="Tripname" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Datefrom" class="control-label text-info"></label>
+                <input asp-for="Datefrom" class="form-control" style="border: 3px solid #ccc;" />
+                <span asp-validation-for="Datefrom" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Dateto" class="control-label text-info"></label>
+                <input asp-for="Dateto" class="form-control" style="border: 3px solid #ccc;"/>
+                <span asp-validation-for="Dateto" class="text-danger"></span>
+            </div>
+            <div class="form-group" hidden>
+                <label asp-for="Imagepath" class="control-label text-info"></label>
+                <input asp-for="Imagepath" class="form-control" style="border: 3px solid #ccc;"/>
+                <span asp-validation-for="Imagepath" class="text-danger"></span>
+            </div>
+            <div class="form-group" >
+                <label asp-for="ImageFile" class="control-label text-info"></label>
+                <input asp-for="ImageFile" class="form-control"  accept="image/*" style="border: 3px solid #ccc;"/>
+                <span asp-validation-for="ImageFile" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Price" class="control-label text-info"></label>
+                <input asp-for="Price" class="form-control" style="border: 3px solid #ccc;"/>
+                <span asp-validation-for="Price" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Itinerary" class="control-label text-info"></label>
+                <input asp-for="Itinerary" class="form-control" style="border: 3px solid #ccc;"/>
+                <span asp-validation-for="Itinerary" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Descriptoin" class="control-label text-info"></label>
+                <input asp-for="Descriptoin" class="form-control" style="border: 3px solid #ccc;"/>
+                <span asp-validation-for="Descriptoin" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Cost" class="control-label text-info"></label>
+                <input asp-for="Cost" class="form-control" style="border: 3px solid #ccc;"/>
+                <span asp-validation-for="Cost" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary mt-2" />
+            </div>
+        </form>
+    </div>
+</div>
+<div>
+    <a asp-action="Index" class="btn btn-primary">Back to List</a>
+</div>

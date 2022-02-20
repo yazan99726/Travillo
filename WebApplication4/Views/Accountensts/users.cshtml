@@ -1,0 +1,111 @@
+﻿@model IEnumerable<WebApplication4.Models.Client>
+
+@{
+    ViewData["Title"] = "users";
+    Layout = "~/Views/Shared/_Layoutac.cshtml";
+      var countcust = ViewBag.countofclient;
+    var countoftrip = ViewBag.countoftrip;
+    var countofreversation = ViewBag.countofreversation;
+}
+
+ <div class="row">
+        <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
+          <div class="card">
+            <div class="card-header p-3 pt-2">
+              <div class="icon icon-lg icon-shape bg-gradient-dark shadow-dark text-center border-radius-xl mt-n4 position-absolute">
+                <i class="material-icons opacity-10">weekend</i>
+              </div>
+              <div class="text-end pt-1">
+                <p class="text-sm mb-0 text-capitalize">Today's Money</p>
+                <h4 class="mb-0">@countoftrip</h4>
+              </div>
+            </div>
+            <hr class="dark horizontal my-0">
+        
+          </div>
+        </div>
+        <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
+          <div class="card">
+            <div class="card-header p-3 pt-2">
+              <div class="icon icon-lg icon-shape bg-gradient-primary shadow-primary text-center border-radius-xl mt-n4 position-absolute">
+                <i class="material-icons opacity-10">person</i>
+              </div>
+              <div class="text-end pt-1">
+                <p class="text-sm mb-0 text-capitalize">Today's Users</p>
+                <h4 class="mb-0">@countcust</h4>
+              </div>
+            </div>
+            <hr class="dark horizontal my-0">
+           
+          </div>
+        </div>
+        <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
+          <div class="card">
+            <div class="card-header p-3 pt-2">
+              <div class="icon icon-lg icon-shape bg-gradient-success shadow-success text-center border-radius-xl mt-n4 position-absolute">
+                <i class="material-icons opacity-10">person</i>
+              </div>
+              <div class="text-end pt-1">
+                <p class="text-sm mb-0 text-capitalize">New Clients</p>
+                <h4 class="mb-0">@countofreversation</h4>
+              </div>
+            </div>
+            <hr class="dark horizontal my-0">
+          
+          </div>
+        </div>
+       
+      </div>
+
+      @*////////////////////////////tabel//////////////////////////////
+        ///////////////////////////////////////////////////////////////
+      *@
+
+      <div class="row mt-5">
+        <div class="col-12">
+          <div class="card my-4">
+            <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
+              <div class="bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3">
+                <h6 class="text-white text-capitalize ps-3">Authors table</h6>
+              </div>
+            </div>
+            <div class="card-body px-0 pb-2">
+              <div class="table-responsive p-0">
+                <table class="table align-items-center mb-0">
+                  <thead>
+                    <tr>
+                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Name</th>
+                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Adress</th>             
+                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Email</th>             
+                    </tr>
+                  </thead>
+                  <tbody>
+                   @foreach (var item in Model)
+                  {                    
+                    <tr>
+                      <td>
+                        <div class="d-flex px-2 py-1">                        
+                          <div class="d-flex flex-column justify-content-center">
+                            <h6 class="mb-0 text-sm">@item.Name</h6>
+                            <p class="text-xs text-secondary mb-0">@item.Phone</p>
+                          </div>
+                        </div>
+                      </td>
+                      <td>
+                        <p class="text-xs font-weight-bold mb-0"></p>
+                        <p class="text-xs text-secondary mb-0">@item.Adress</p>
+                      </td>                     
+                      <td>
+                        <p class="text-xs font-weight-bold mb-0">@item.Email</p>
+                      </td>
+                  
+                    </tr> 
+                     }
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+

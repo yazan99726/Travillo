@@ -1,0 +1,99 @@
+/*--------------------------------------------------------------
+# Gallery
+--------------------------------------------------------------*/
+.gallery {
+  padding-bottom: 0;
+}
+.gallery .gallery-item {
+  overflow: hidden;
+  border-right: 3px solid #fff;
+  border-bottom: 3px solid #fff;
+}
+.gallery .gallery-item img {
+  transition: all ease-in-out 0.4s;
+}
+.gallery .gallery-item:hover img {
+  transform: scale(1.1);
+}
+.subheading {
+    font-size: 50px;
+    display: block;
+    margin-bottom: 5px;
+    color: #f15d30;
+    font-family: "Arizonia", cursive;
+}
+
+/*--------------------------------------------------------------
+# payment
+--------------------------------------------------------------*/
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,700&display=swap');
+
+
+
+.card {
+    max-width: 500px;
+    margin: auto;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    padding: 20px;
+    color: black;
+    border-radius: 20px
+}
+
+p {
+    margin: 0px
+}
+
+.container .h8 {
+    font-size: 30px;
+    font-weight: 800;
+    text-align: center
+}
+
+.btn.btn-primary {
+    width: 100%;
+    height: 70px;
+    text-align:center;
+    padding: 0 15px;
+    background-image: linear-gradient(to right, #77A1D3 0%, #79CBCA 51%, #77A1D3 100%);
+    border: none;
+    transition: 0.5s;
+    background-size: 200% auto
+}
+
+.btn.btn.btn-primary:hover {
+    background-position: right center;
+    color: #fff;
+    text-decoration: none
+}
+
+.btn.btn-primary:hover .fas.fa-arrow-right {
+    transform: translate(15px);
+    transition: transform 0.2s ease-in
+}
+
+.form-control {
+    color: white;
+    background-color: #223C60;
+    border: 2px solid transparent;
+    height: 60px;
+    padding-left: 20px;
+    vertical-align: middle
+}
+
+    .form-control:focus {
+        color: white;
+        background-color: #0C4160;
+        border: 2px solid #2d4dda;
+        box-shadow: none
+    }
+
+.text {
+    font-size: 14px;
+    font-weight: 600
+}
+
+::placeholder {
+    font-size: 14px;
+    font-weight: 600
+}

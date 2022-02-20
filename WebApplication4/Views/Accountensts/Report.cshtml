@@ -1,0 +1,260 @@
+﻿@model Tuple<IEnumerable<WebApplication4.Models.Reservation>,IEnumerable<WebApplication4.Models.Reservation>>
+@{
+    ViewData["Title"] = "Report";
+    var sum = ViewBag.sum;
+    var salry = ViewBag.salary;
+      var sumY = ViewBag.sumY;
+    var salryY = ViewBag.salaryY;
+    Layout = "~/Views/Shared/_Layoutac.cshtml";
+}
+ <div class="row">
+        <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
+          <div class="card">
+            <div class="card-header p-3 pt-2">
+              <div class="icon icon-lg icon-shape bg-gradient-dark shadow-dark text-center border-radius-xl mt-n4 position-absolute">
+                <i class="material-icons opacity-10">weekend</i>
+              </div>
+              <div class="text-end pt-1">
+                <p class="text-sm mb-0 text-capitalize">reversation Monthly</p>
+                <h4 class="mb-0">$@sum</h4>
+              </div>
+            </div>
+            <hr class="dark horizontal my-0">
+            <div class="card-footer p-3">
+              <p class="mb-0"><span class="text-success text-sm font-weight-bolder">cost all reversation monthly</span></p>
+            </div>
+          </div>
+        </div>
+        <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
+          <div class="card">
+            <div class="card-header p-3 pt-2">
+              <div class="icon icon-lg icon-shape bg-gradient-primary shadow-primary text-center border-radius-xl mt-n4 position-absolute">
+                <i class="material-icons opacity-10">person</i>
+              </div>
+              <div class="text-end pt-1">
+                <p class="text-sm mb-0 text-capitalize">Financial Monthly</p>
+                <h4 class="mb-0">$@salry</h4>
+              </div>
+            </div>
+            <hr class="dark horizontal my-0">
+            <div class="card-footer p-3">
+              <p class="mb-0"><span class="text-success text-sm font-weight-bolder">Financial Profits and losses</span></p>
+            </div>
+          </div>
+        </div>
+        <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
+          <div class="card">
+            <div class="card-header p-3 pt-2">
+              <div class="icon icon-lg icon-shape bg-gradient-success shadow-success text-center border-radius-xl mt-n4 position-absolute">
+                <i class="material-icons opacity-10">person</i>
+              </div>
+              <div class="text-end pt-1">
+                <p class="text-sm mb-0 text-capitalize">Reversation Yearly</p>
+                <h4 class="mb-0">$@sumY</h4>
+              </div>
+            </div>
+            <hr class="dark horizontal my-0">
+            <div class="card-footer p-3">
+              <p class="mb-0"><span class="text-success text-sm font-weight-bolder">cost all reversation Yearly</span></p>
+            </div>
+          </div>
+        </div>
+        <div class="col-xl-3 col-sm-6">
+          <div class="card">
+            <div class="card-header p-3 pt-2">
+              <div class="icon icon-lg icon-shape bg-gradient-info shadow-info text-center border-radius-xl mt-n4 position-absolute">
+                <i class="material-icons opacity-10">weekend</i>
+              </div>
+              <div class="text-end pt-1">
+                <p class="text-sm mb-0 text-capitalize">Financial Yearly</p>
+                <h4 class="mb-0">$@salryY</h4>
+              </div>
+            </div>
+            <hr class="dark horizontal my-0">
+            <div class="card-footer p-3">
+              <p class="mb-0"><span class="text-success text-sm font-weight-bolder">Financial Profits and losses</span></p>
+            </div>
+          </div>
+        </div>
+      </div>
+<!----------------------------table----------->
+<div class="container-fluid py-4 mt-5">
+      <div class="row">
+        <div class="col-12">
+          <div class="card my-2">
+            <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
+              <div class="bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3">
+                <h6 class="text-white text-capitalize ps-3">Billing table</h6>
+              </div>
+            </div>
+            <div class="card-body px-0 pb-2">
+              <div class="table-responsive p-0">
+                <table class="table align-items-center mb-0" id="tableData">
+                  <thead>
+                    <tr>
+                      <th class="text-uppercase text-info text-xxs font-weight-bolder opacity-7">Client</th>
+                      <th class="text-uppercase text-info text-xxs font-weight-bolder opacity-7 ps-2">Function</th>
+                      <th class="text-uppercase text-info text-xxs font-weight-bolder opacity-7 ps-2">Description</th>
+                      <th class="text-secondary opacity-7"></th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                   @foreach (var item in Model.Item1)
+                     {                                            
+                    <tr>
+                      <td>
+                        <div class="d-flex px-2 py-1">
+                          <div>
+                            <img src=@Url.Content("~/image/"+item.Trip.Imagepath) asp-append-version="true" class="avatar avatar-sm me-3 border-radius-lg" alt="user6">
+                          </div>
+                          <div class="d-flex flex-column justify-content-center">
+                            <h6 class="mb-0 text-sm">@item.Trip.Tripname</h6>
+                            <p class="text-xs text-secondary mb-0">@item.Trip.Reservations.Count</p>
+                          </div>
+                        </div>
+                      </td>
+                     <td>
+                        <p class="text-xs font-weight-bold mb-0">@item.Trip.Price</p>                        
+                      </td> 
+                      <td>
+                        <p class="text-xs text-secondary mb-0">@item.Trip.Cost</p>
+                      </td>                                         
+                    
+                    </tr>
+                      }
+                      <tr>
+                       <th class="text-uppercase text-danger text-xxs font-weight-bolder "></th>
+                      <th class="text-uppercase text-danger text-xxs font-weight-bolder  ps-2">Function</th>
+                      <th class="text-uppercase text-danger text-xxs font-weight-bolder ps-2">Description</th>
+                      <th class="text-secondary opacity-7"></th>
+                      </tr>
+                       <tr><td></td><td>@sum</td><td>@salry</td></tr>
+                       <tr class="card-header p-0 position-relative mt-n4 mx-3 z-index-2" >
+                           <td colspan=4 class="bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3">
+                                <h6 class="text-white text-capitalize ps-3">Billing table</h6>
+                           </td>
+                       </tr>
+                    
+                    
+               
+                    <tr class="table align-items-center mb-0">
+                      <th class="text-uppercase text-info text-xxs font-weight-bolder opacity-7">Client</th>
+                      <th class="text-uppercase text-info text-xxs font-weight-bolder opacity-7 ps-2">Function</th>
+                      <th class="text-uppercase text-info text-xxs font-weight-bolder opacity-7 ps-2">Description</th>
+                      <th class="text-secondary opacity-7"></th>
+                    </tr>
+                  
+                   @foreach (var item in Model.Item2)
+                     {                                            
+                    <tr>
+                      <td>
+                        <div class="d-flex px-2 py-1">
+                          <div>
+                            <img src=@Url.Content("~/image/"+item.Trip.Imagepath) asp-append-version="true" class="avatar avatar-sm me-3 border-radius-lg" alt="user6">
+                          </div>
+                          <div class="d-flex flex-column justify-content-center">
+                            <h6 class="mb-0 text-sm">@item.Trip.Tripname</h6>
+                            <p class="text-xs text-secondary mb-0">@item.Trip.Reservations.Count</p>
+                          </div>
+                        </div>
+                      </td>
+                     <td>
+                        <p class="text-xs font-weight-bold mb-0">@item.Trip.Price</p>                        
+                      </td> 
+                      <td>
+                        <p class="text-xs text-secondary mb-0">@item.Trip.Cost</p>
+                      </td>                                         
+                    
+                    </tr>
+                      }  
+                       <tr>
+                       <th class="text-uppercase text-danger text-xxs font-weight-bolder"></th>
+                      <th class="text-uppercase text-danger text-xxs font-weight-bolder o ps-2">Function</th>
+                      <th class="text-uppercase text-danger text-xxs font-weight-bolder  ps-2">Description</th>
+                      <th class="text-secondary opacity-7"></th>
+                      </tr>
+                       <tr><td></td><td>@sumY</td><td>@salryY</td></tr>
+                      <tr><th class="text-secondary opacity-7"></th></tr>
+ 
+                  </tbody>
+                </table>
+                <button id="export" class="btn btn-success text-white ">Excel</button>
+                <button class="btn btn-danger" onclick="printTable();"><span class="glyphicon glyphicon-print"></span> Print</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+	</div>
+
+<script>
+function exportTableToCSV(filename) {
+var csv = [];
+var rows = document.querySelectorAll("table tr");
+for (var i = 0; i < rows.length; i++) {
+var row = [], cols = rows[i].querySelectorAll("td, th");
+for (var j = 0; j < cols.length; j++)
+row.push(cols[j].innerText);
+csv.push(row.join(","));
+}
+
+downloadCSV(csv.join("\n"), filename);
+}
+
+function downloadCSV(csv, filename) {
+var csvFile;
+var downloadLink;
+
+csvFile = new Blob([csv], { type: "text/csv" });
+
+downloadLink = document.createElement("a");
+
+downloadLink.download = filename;
+downloadLink.href = window.URL.createObjectURL(csvFile);
+
+downloadLink.style.display = "none";
+
+document.body.appendChild(downloadLink);
+
+downloadLink.click();
+}
+
+document.getElementById('export').onclick = function () {
+var tableId = document.getElementById('tableData').id;
+htmlTableToExcel(tableId, filename = '');
+}
+var htmlTableToExcel = function (tableId, fileName = '') {
+var downloadedFileName = 'excel_table_data';
+var TableDataType = 'application/vnd.ms-excel';
+var selectTable = document.getElementById(tableId);
+var htmlTable = selectTable.outerHTML.replace(/ /g, '%20');
+
+filename = filename ? filename + '.xls' : downloadedFileName + '.xls';
+var downloadingURL = document.createElement("a");
+document.body.appendChild(downloadingURL);
+
+if (navigator.msSaveOrOpenBlob) {
+var blob = new Blob(['\ufeff', htmlTable], {
+type: TableDataType
+});
+navigator.msSaveOrOpenBlob(blob, fileName);
+} else {
+
+downloadingURL.href = 'data:' + TableDataType + ', ' + htmlTable;
+downloadingURL.download = fileName;
+downloadingURL.click();
+}
+}
+
+function printTable() {
+var el = document.getElementById("tableData");
+
+el.setAttribute('border', '5px');
+el.setAttribute('cellpadding', '5');
+el.setAttribute('color', 'green');
+newPrint = window.open("");
+newPrint.document.write(el.outerHTML);
+newPrint.print();
+newPrint.close();
+}
+</script>

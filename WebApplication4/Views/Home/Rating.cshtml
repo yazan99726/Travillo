@@ -1,0 +1,76 @@
+﻿@model IEnumerable<WebApplication4.Models.Testimonial>
+@{
+    ViewData["Title"] = "Rating";
+}
+
+
+    <div class="container-fluid py-4">
+      <div class="row">
+        <div class="col-12">
+          <div class="card my-2">
+            <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
+              <div class="bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3">
+                <h6 class="text-white text-capitalize ps-3">Testimonial table</h6>
+              </div>
+            </div>
+            <div class="card-body px-0 pb-2">
+              <div class="table-responsive p-0">
+                <table class="table align-items-center mb-0">
+                  <thead>
+                    <tr>
+                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Client</th>
+                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Function</th>
+                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Description</th>
+                      <th class="text-secondary opacity-7"></th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                   @foreach (var item in Model)
+                     {                                            
+                    <tr>
+                      <td>
+                        <div class="d-flex px-2 py-1">
+                          <div>
+                            <img src=@Url.Content("~/image/"+item.Imagepath) asp-append-version="true" class="avatar avatar-sm me-3 border-radius-lg" alt="user6">
+                          </div>
+                          <div class="d-flex flex-column justify-content-center">
+                            <h6 class="mb-0 text-sm">@item.IdCusNavigation.Name</h6>
+                            <p class="text-xs text-secondary mb-0">@item.IdCusNavigation.Email</p>
+                          </div>
+                        </div>
+                      </td>
+                     <td class="align-middle">
+                         @if(@item.Accept=="0")
+                         {
+                         <button  class="btn btn-outline-danger" style="  padding: 4px 7px;">
+                         @Html.ActionLink("Accept", "Updat","Home", new { id = item.Id })   
+                         </button>
+                         }else
+                         {
+                          <button  class="btn btn-outline-success" style="  padding: 4px 7px;">
+                         @Html.ActionLink("deny", "Reject","Home", new { id = item.Id })   
+                         </button>
+                         }
+                        <button  class="btn btn-outline-danger" style="  padding: 4px 7px;">
+                             @Html.ActionLink("Delete", "Delete","Home", new { id = item.Id })                       
+                        </button>
+                      </td>
+                      <td>
+                        <pre class="text-xs font-weight-bold mb-0"> @item.Description</pre>
+                       
+                      </td>
+                     
+                     
+                    
+                    </tr>
+                      }
+
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+	</div>
+

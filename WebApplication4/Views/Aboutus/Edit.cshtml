@@ -1,0 +1,40 @@
+﻿@model WebApplication4.Models.Aboutu
+
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1 class=" text-danger ">Edit Aboutus</h1>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" />
+            <div class="form-group">
+                <label asp-for="Description" class="control-label"></label>
+                <textarea  asp-for="Description" cols="40" rows="5" class="form-control" style="border: 3px solid #ccc;"></textarea>
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                 <label class="control-label">Imagepath</label><br/>
+                 <img src=@Url.Content("~/image/"+Model.Imagepath) asp-append-version="true" style="border-radius:10% ;width:100px ; height:100px"/>
+                 <input asp-for="Imagepath" class="form-control" hidden/>            
+             </div>
+             <div class="form-group ">
+                <label asp-for="ImageFile" class="control-label"></label>
+                <input asp-for="ImageFile" class="form-control" style="border: 3px solid #ccc;" accept="image/*"/>
+                <span asp-validation-for="ImageFile" class="text-danger"></span>
+            </div>
+            <div class="form-group mt-2">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index"  class="btn btn-primary">Back to List</a>
+</div>
+

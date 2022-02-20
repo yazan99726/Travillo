@@ -1,0 +1,40 @@
+﻿@model IEnumerable<WebApplication4.Models.Aboutu>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1 class=" text-danger ">Index</h1>
+
+
+<table class="table">
+    <tbody>
+@foreach (var item in Model) {
+        <tr class="row">
+             <th class = "col-sm-2">
+                @Html.DisplayNameFor(model => model.Imagepath)
+            </th>
+            <td class = "col-sm-10">
+                 <img src=@Url.Content("~/image/"+item.Imagepath) asp-append-version="true" style="border-radius:10% ;width:100px ; height:100px"/>
+            </td>
+               <th class = "col-sm-2">
+                @Html.DisplayNameFor(model => model.Description)
+            </th>
+            <td class = "col-sm-10">
+               <textarea cols="18" rows="2" class="form-control" style="border: 3px solid #ccc;"> @Html.DisplayFor(modelItem => item.Description)</textarea>
+            </td> 
+        </tr>
+            <tr>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-info">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-success">Details</a> 
+@*                <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-primary">Delete</a>
+*@            </td></tr>
+       
+}
+    </tbody>
+</table>
+@*<p>
+    <a asp-action="Create">Create New</a>
+</p>*@

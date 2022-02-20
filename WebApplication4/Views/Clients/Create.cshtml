@@ -1,0 +1,65 @@
+﻿@model WebApplication4.Models.Client
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Form-v9 by Colorlib</title>
+	<!-- Mobile Specific Metas -->
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<!-- Font-->
+	<link rel="stylesheet" type="/regester/text/css" href="/css/nunito-font.css">
+	<!-- Main Style Css -->
+    <link rel="stylesheet" href="/regester/css/style.css"/>
+</head>
+<body class="form-v9">
+
+
+
+
+
+<div class="page-content" style="background-image: url('/regester/images/form-v9.jpg')">
+		<div class="form-v9-content" style="background-image: url('regester/images/form-v9.jpg')">
+			<form class="form-detail" asp-action="Create">
+				<h2>Registration Form</h2>
+				<div class="form-row-total">				
+					<div class="form-row">
+						<input  asp-for="Name" class="input-text" placeholder="Your Name" required >
+					</div>
+				</div>
+				<div class="form-row-total">					
+					<div class="form-row">
+						<input type="text" asp-for="Phone" class="input-text" placeholder="Your Phone" required>
+					</div>
+				</div>
+				
+				<div class="form-row-total">				
+					<div class="form-row">
+						<input type="text"  asp-for="Adress" class="input-text" placeholder="Your Adress" required >
+					</div>
+				</div>
+				<div class="form-row-total">					
+					<div class="form-row">
+						<input type="text"  id="username" name="username" class="input-text" placeholder="Your UserName" required>
+					</div>
+				</div>
+				<div class="form-row-total">					
+					<div class="form-row">
+						<input type="password"  id="password" name="password" class="input-text" placeholder="Your Password" required>
+					</div>
+				</div>
+				<div class="form-row-last">
+					<input type="submit" name="register" class="register" value="Register">
+				</div>
+			</form>
+			
+			
+		</div>
+	</div>
+</body>
+</html>

@@ -1,0 +1,97 @@
+﻿ @model IEnumerable<WebApplication4.Models.Trip>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1 class=" text-danger ">Trips</h1>
+
+<div class="col-md-12">
+   <form asp-action="Index">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+     <div class="container">
+        <div class="row">
+        <div class="form-group col-lg-3">
+            <label class="control-label">Date from</label>
+            <div class="">
+                <input class="form-control" type="date" name="datefrom" style="border-bottom: 2px solid red;" />
+            </div>
+        </div>
+
+        <div class="form-group col-lg-3">
+            <label class="control-label">Date To</label>
+            <div class="">
+                <input class="form-control" type="date" name="dateto" style="border-bottom: 2px solid red;"/>
+            </div>
+        </div>
+         <div class="form-group col-lg-3 mt-4 ">
+            <input type="submit" value="Search" class="btn btn-outline-success" />
+        </div>
+        </div>
+    </div>  
+  </form>
+<table class="table mt-5">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Tripname)
+            </th>
+         @*   <th>
+                @Html.DisplayNameFor(model => model.Datefrom)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Dateto)
+            </th>*@
+            <th>
+                @Html.DisplayNameFor(model => model.Imagepath)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Price)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Itinerary)
+            </th>
+           @* <th>
+                @Html.DisplayNameFor(model => model.Descriptoin)
+            </th>*@
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Tripname)
+            </td>
+         @*   <td>
+                @Html.DisplayFor(modelItem => item.Datefrom)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Dateto)
+            </td>*@
+            <td>
+                 <img src=@Url.Content("~/image/"+item.Imagepath) asp-append-version="true" style="border-radius:10% ;width:100px ; height:100px"/>
+                @*@Html.DisplayFor(modelItem => item.Imagepath)*@   
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Price)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Itinerary)
+            </td>
+          @*  <td>
+                @Html.DisplayFor(modelItem => item.Descriptoin)
+            </td>*@
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id"    class="btn btn-info"   >Edit      </a> |
+                <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-success">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id"  class="btn btn-primary">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+</div>
+<p class="btn btn-outline-success">
+    <a asp-action="Create">Create New</a>
+</p>
